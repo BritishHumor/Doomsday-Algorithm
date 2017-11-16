@@ -9,12 +9,6 @@ In short, you give it a date and it tells you the day of the week, as simple as 
 
 This was probably one of my first 'complex' programs I wrote back when I was probably somewhere between 12-14 years old, it was written in [BASIC](https://en.wikipedia.org/wiki/BBC_BASIC) and honestly reading it now I can bearly make any sense of it myself.
 
-Currently I only have access to a recently modified version of the code, but I want to upload to absolute original so I have someone working on finding it for me and it should be available within the next couple of days.
-
-Once it is available I'll upload it here under the MIT License and maybe in the future I'll rewrite it for another language but this time I wont have out 12+ if statements nested within one another.
-
-Till Then!
-
--Liam Holmes
+The File is now available in it's original format **'Doomsday Algorithm.bbc'** this **WILL** require the [BBC BASIC editor](http://www.bbcbasic.co.uk/bbcbasic.html) to run the code, and in the future I will re write other language versions of this.
 
 [![Devrant Rant](https://devrant.com/rants/1000628/image.png)](https://devrant.com/rants/1000628)
