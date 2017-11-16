@@ -1,0 +1,195 @@
+   10 REM A program to detect the weekday
+   20 REM using the Doomsday Algorithm.
+   30 REM Liam Holmes, July 13
+   40 COLOUR 128+0
+   50 CLS
+   60 COLOUR 10
+   70 PRINT ""
+   80 PRINT ""
+   90 PRINT ""
+  100 PRINT "     ============================================="
+  110 PRINT ""
+  120 PRINT "            YEARS CURRENTLY IN THIS PROGRAM:      "
+  130 PRINT "                    1800                          "
+  140 PRINT "                         TO                       "
+  150 PRINT "                            2199                  "
+  160 PRINT ""
+  170 PRINT "     ============================================="
+  180 PRINT ""
+  190 PRINT "          Please enter questions as Digits"
+  200 PRINT "                     example:             "
+  210 PRINT "                     Date 11              "
+  220 PRINT "                     Month 2              "
+  230 PRINT "                     Year 1978            "
+  240 PRINT "                would be 11/02/1978       "
+  250 REPEAT
+  260   REPEAT
+  270     PRINT "     ============================================="
+  280     PRINT ""
+  290     PRINT ""
+  300     INPUT "Please Enter Date> " date$
+  310     PRINT ""
+  320     PRINT date$
+  330     PRINT ""
+  340     INPUT "Please Enter Month> " month$
+  350     PRINT ""
+  360     PRINT month$
+  370     PRINT ""
+  380     INPUT "Please Enter Year> " year$
+  390     PRINT ""
+  400     PRINT year$
+  410     PRINT ""
+  420     PRINT "     ============================================="
+  430     PRINT "     Is "; date$; "/"; month$; "/"; year$; " Correct?"
+  440     INPUT "Yes/No> " correct$
+  450   UNTIL correct$ = "Yes" OR correct$ = "YES" OR correct$ = "yes" OR correct$ = "YEs" OR correct$ = "yES" OR correct$ = "yEs" OR correct$ = "yeS" OR correct$ = "YeS"
+  460   PRINT "Calculating Date..."
+  470   year = VAL(year$)
+  480   month = VAL(month$)
+  490   date = VAL(date$)
+  500   WAIT 100
+  510   Sunday = 0
+  520   Monday = 1
+  530   Tuesday = 2
+  540   Wednesday = 3
+  550   Thursday = 4
+  560   Friday = 5
+  570   Saturday = 6
+  580   IF FNdefleep(year) THEN
+  590     February=29
+  600   ELSE
+  610     February=28
+  620   ENDIF
+  630   IF FNdefleep(year) THEN
+  640     January=4
+  650   ELSE
+  660     January=3
+  670   ENDIF
+  680   March = 7
+  690   April = 4
+  700   May = 9
+  710   June = 6
+  720   July = 11
+  730   August = 8
+  740   September = 5
+  750   October = 10
+  760   November = 7
+  770   December = 12
+  780   yearmod$ = RIGHT$(year$, 2)
+  790   A = VAL(yearmod$)
+  800   B = VAL(yearmod$) DIV 12
+  810   C = B * 12
+  820   D = A - C
+  830   E = D DIV 4
+  840   IF year >= 1800 AND year <= 1899 THEN
+  850     day=Friday
+  860   ELSEIF year >= 1900 AND year <= 1999 THEN
+  870       day=Wednesday
+  880     ELSEIF year >= 2000 AND year <= 2099 THEN
+  890         day=Tuesday
+  900       ELSEIF year >= 2100 AND year <= 2199 THEN
+  910           day=Sunday
+  920         ELSE
+  930           COLOUR 9
+  940           PRINT "     /!\  YEAR NOT YET ADDED  /!\"
+  950           PRINT ""
+  960           END
+  970         ENDIF
+  980       ENDIF
+  990     ENDIF
+ 1000   ENDIF
+ 1010 ENDIF
+ 1020 G = B + D + E + day
+ 1030 IF G > 6 THEN
+ 1040   H=G-7
+ 1050 ELSE
+ 1060   H=G
+ 1070 ENDIF
+ 1080 REPEAT
+ 1090   IF H > 6 THEN
+ 1100     H=H-7
+ 1110   ELSE
+ 1120     H=G
+ 1130   ENDIF
+ 1140 UNTIL H >= 0 AND H <= 6
+ 1150 IF month = 1 THEN
+ 1160   I=January
+ 1170 ELSEIF month = 2 THEN
+ 1180     I=February
+ 1190   ELSEIF month = 3 THEN
+ 1200       I=March
+ 1210     ELSEIF month = 4 THEN
+ 1220         I=April
+ 1230       ELSEIF month = 5 THEN
+ 1240           I=May
+ 1250         ELSEIF month = 6 THEN
+ 1260             I=June
+ 1270           ELSEIF month = 7 THEN
+ 1280               I=July
+ 1290             ELSEIF month = 8 THEN
+ 1300                 I=August
+ 1310               ELSEIF month = 9 THEN
+ 1320                   I=September
+ 1330                 ELSEIF month = 10 THEN
+ 1340                     I=October
+ 1350                   ELSEIF month = 11 THEN
+ 1360                       I=November
+ 1370                     ELSEIF month = 12 THEN
+ 1380                         I=December
+ 1390                       ENDIF
+ 1400                     ENDIF
+ 1410                   ENDIF
+ 1420                 ENDIF
+ 1430               ENDIF
+ 1440             ENDIF
+ 1450           ENDIF
+ 1460         ENDIF
+ 1470       ENDIF
+ 1480     ENDIF
+ 1490   ENDIF
+ 1500 ENDIF
+ 1510 REPEAT
+ 1520   IF I > date THEN
+ 1530     I=I-7
+ 1540   ELSE I=I
+ 1550   ENDIF
+ 1560 UNTIL I <= date
+ 1570 J=I+7
+ 1580 K=J-date
+ 1590 L=H-K
+ 1600 IF L < 0 THEN
+ 1610   M=K-H
+ 1620   N=7-M
+ 1630 ELSE
+ 1640   N=L
+ 1650 ENDIF
+ 1660 IF N = 0 THEN
+ 1670   O$="Sunday"
+ 1680 ELSEIF N = 1 THEN
+ 1690     O$="Monday"
+ 1700   ELSEIF N = 2 THEN
+ 1710       O$="Tuesday"
+ 1720     ELSEIF N = 3 THEN
+ 1730         O$="Wednesday"
+ 1740       ELSEIF N = 4 THEN
+ 1750           O$="Thursday"
+ 1760         ELSEIF N = 5 THEN
+ 1770             O$="Friday"
+ 1780           ELSEIF N = 6 THEN
+ 1790               O$="Saturday"
+ 1800             ENDIF
+ 1810           ENDIF
+ 1820         ENDIF
+ 1830       ENDIF
+ 1840     ENDIF
+ 1850   ENDIF
+ 1860 ENDIF
+ 1870 WAIT 300
+ 1880 PRINT ""
+ 1890 PRINT "     The weekday of "; date$; "/"; month$; "/"; year$; " Is "; O$
+ 1900 PRINT ""
+ 1910 WAIT 300
+ 1920 UNTIL FALSE
+ 1930 END
+ 1940 DEF FNdefleep(yr)
+ 1950 = (yr MOD 4 = 0) AND ((yr MOD 400 = 0) OR (yr MOD 100 <> 0))
